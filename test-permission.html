@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>麥克風權限請求</title>
+</head>
+<body>
+    <h1>麥克風權限請求</h1>
+    <button id="requestPermission">請求麥克風權限</button>
+    <p id="result"></p>
+
+    <script>
+        const requestButton = document.getElementById('requestPermission');
+        const resultParagraph = document.getElementById('result');
+
+        requestButton.addEventListener('click', async () => {
+            try {
+                const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+                resultParagraph.textContent = '麥克風權限已獲得！';
+                stream.getTracks().forEach(track => track.stop());
+            } catch (error) {
+                resultParagraph.textContent = `無法獲得麥克風權限: ${error.message}`;
+            }
+        });
+    </script>
+</body>
+</html>
