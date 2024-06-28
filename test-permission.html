@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>麥克風權限請求</title>
+    <title>mic permission request</title>
 </head>
 <body>
-    <h1>麥克風權限請求</h1>
-    <button id="requestPermission">請求麥克風權限</button>
+    <h1>mic permission request</h1>
+    <button id="requestPermission">request mic permission</button>
     <p id="result"></p>
 
     <script>
@@ -17,10 +17,10 @@
         requestButton.addEventListener('click', async () => {
             try {
                 const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
-                resultParagraph.textContent = '麥克風權限已獲得！';
+                resultParagraph.textContent = 'get mic permission！';
                 stream.getTracks().forEach(track => track.stop());
             } catch (error) {
-                resultParagraph.textContent = `無法獲得麥克風權限: ${error.message}`;
+                resultParagraph.textContent = `cannot get mic permission: ${error.message}`;
             }
         });
     </script>
